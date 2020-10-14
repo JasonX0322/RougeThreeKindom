@@ -13,16 +13,19 @@ public class Card : MonoBehaviour
     public Sprite CardBack;
     public Sprite CardFront;
     public int cardPos;
+    public Sprite CardEmpty;
     GameObject gmgo;
     GameManage gm;
 
     Image myImg;
+    public bool isEmpty;
     void Start()
     {
         gmgo = GameObject.Find("GameManager");
         gm = gmgo.GetComponent<GameManage>();
         myImg = this.GetComponent<Image>();
-        myImg.sprite = CardBack;
+        if (!isEmpty)
+            myImg.sprite = CardBack;
     }
 
     public void Choose()
@@ -36,5 +39,12 @@ public class Card : MonoBehaviour
                 (() =>this.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 1, 1).OnComplete
                 (() => gm.Pass()));
         });
+    }
+
+    public void SetAsEmpty()
+    {
+        isEmpty = true;
+        this.GetComponent<Toggle>().enabled = false;
+        this.GetComponent<Image>().sprite = CardEmpty;
     }
 }

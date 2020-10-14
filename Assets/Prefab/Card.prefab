@@ -91,6 +91,8 @@ MonoBehaviour:
   CardBack: {fileID: 21300000, guid: 0cfd183325edc8d4286ca0fcad42d265, type: 3}
   CardFront: {fileID: 21300000, guid: 58e69e7684cfd084980eaacb2024812a, type: 3}
   cardPos: 0
+  CardEmpty: {fileID: 21300000, guid: b901c9bf761cbd0468b6916d679c13ee, type: 3}
+  isEmpty: 0
 --- !u!114 &1572619527855623227
 MonoBehaviour:
   m_ObjectHideFlags: 0

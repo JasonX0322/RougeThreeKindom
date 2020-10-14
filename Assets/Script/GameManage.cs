@@ -31,7 +31,6 @@ public class GameManage : MonoBehaviour
             GameObject temp = Instantiate(cardList);
             temp.GetComponent<CardList>().ListLevel = i;
             temp.GetComponent<CardList>().Init();
-            Debug.Log(temp.GetComponent<CardList>().CardNum);
             temp.transform.SetParent(canvas.transform);
             temp.transform.localPosition = new Vector3(0, -250 + i * 100, 0);
             temp.transform.localScale = new Vector3(1, 1, 1);
@@ -42,8 +41,7 @@ public class GameManage : MonoBehaviour
         {
             canvas.transform.GetChild(i).transform.SetAsLastSibling();
         }
-        foreach (Toggle temp in cards[0].GetComponentsInChildren<Toggle>())
-            temp.enabled = true;
+        cards[0].transform.GetChild(2).GetComponent<Toggle>().enabled = true;
     }
 
     void AddList()
@@ -51,7 +49,6 @@ public class GameManage : MonoBehaviour
         GameObject temp = Instantiate(cardList);
         temp.GetComponent<CardList>().ListLevel = LevelNow + 4;
         temp.GetComponent<CardList>().Init();
-        Debug.Log(temp.GetComponent<CardList>().CardNum);
         temp.transform.SetParent(canvas.transform);
         temp.transform.localPosition = new Vector3(0, 150, 0);
         temp.transform.localScale = new Vector3(1, 1, 1);
@@ -86,6 +83,19 @@ public class GameManage : MonoBehaviour
         {
             Destroy(cards[0]);
             cards.RemoveAt(0);
+        }
+    }
+    public enum LoseCondition
+    {
+        NoWayToGo
+    }
+    public void Lose(LoseCondition lc)
+    {
+        switch(lc)
+        {
+            case LoseCondition.NoWayToGo:
+                Debug.Log("此处，就是落凤坡吗");
+                break;
         }
     }
 }
