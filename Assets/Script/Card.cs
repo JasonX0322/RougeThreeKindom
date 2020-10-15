@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class Card : MonoBehaviour
 {
@@ -18,13 +19,26 @@ public class Card : MonoBehaviour
     GameManage gm;
 
     Image myImg;
-    public bool isEmpty;
+
+    public CardType myType = CardType.Soldier;
+
+    public enum CardType
+    {
+        Empty,
+        Soldier,
+        Leader,
+        Enemy,
+        Boss,
+        City
+    }
+
+
     void Start()
     {
         gmgo = GameObject.Find("GameManager");
         gm = gmgo.GetComponent<GameManage>();
         myImg = this.GetComponent<Image>();
-        if (!isEmpty)
+        if (myType != CardType.Empty)
             myImg.sprite = CardBack;
     }
 
@@ -35,16 +49,45 @@ public class Card : MonoBehaviour
         this.transform.DOLocalRotate(new Vector3(0, 90, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() => 
         {
             myImg.sprite = CardFront;
-            this.transform.DOLocalRotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear).OnComplete
-                (() =>this.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 1, 1).OnComplete
-                (() => gm.Pass()));
+            this.transform.DOLocalRotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+                this.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 1, 1).OnComplete(() =>
+                SwitchCardType()));
         });
     }
 
     public void SetAsEmpty()
     {
-        isEmpty = true;
+        myType = CardType.Empty;
         this.GetComponent<Toggle>().enabled = false;
         this.GetComponent<Image>().sprite = CardEmpty;
+    }
+
+    void SwitchCardType()
+    {
+        switch(myType)
+        {
+            case CardType.Soldier:
+                gm.AddSoldier(Soldier.SoldierType.Soldier1);
+                gm.Pass();
+                break;
+            case CardType.Leader:
+                gm.Pass();
+                break;
+            case CardType.Enemy:
+                gm.Pass();
+                break;
+            case CardType.Boss:
+                gm.Pass();
+                break;
+            case CardType.City:
+                gm.Pass();
+                break;
+        }
+    }
+
+    void GenerateMyType()
+    {
+        CardType[] types = Enum.GetValues(typeof(CardType)) as CardType[];
+        myType = types[UnityEngine.Random.Range(1, 5)];
     }
 }
