@@ -24,7 +24,7 @@ public class GameManage : MonoBehaviour
     [Header("将军列表")]
     public List<General> myGeneral = new List<General>();
 
-    Soldier exsoldier;
+    public Soldier PrefabSolider;
 
     void Start()
     {
@@ -110,8 +110,8 @@ public class GameManage : MonoBehaviour
 
     public void AddSoldier(Soldier.SoldierType st)
     {
-        Soldier s = exsoldier;
-        s.Init(st);
+        Soldier s = GameObject.Instantiate(PrefabSolider);
+        PrefabSolider.Init(st);
         mySoldier.Add(s);
     }
 }

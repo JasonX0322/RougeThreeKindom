@@ -7,6 +7,7 @@ public class Soldier : MonoBehaviour
     /*
      *
      */
+    SoldierType myType;
     void Start()
     {
         
@@ -18,15 +19,9 @@ public class Soldier : MonoBehaviour
         Soldier2
     }
 
-    public void Init(SoldierType myType)
+    public void Init(SoldierType Type)
     {
-        switch(myType)
-        {
-            case SoldierType.Soldier1:
-                break;
-            case SoldierType.Soldier2:
-                break;
-        }
+        myType = Type;
     }
 
 }

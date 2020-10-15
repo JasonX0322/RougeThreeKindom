@@ -33,7 +33,7 @@ public class Card : MonoBehaviour
     }
 
 
-    void Start()
+    void Awake()
     {
         gmgo = GameObject.Find("GameManager");
         gm = gmgo.GetComponent<GameManage>();

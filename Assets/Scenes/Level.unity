@@ -373,6 +373,10 @@ MonoBehaviour:
   canvas: {fileID: 890115821}
   cards: []
   PosNow: 0
+  mySoldier: []
+  myGeneral: []
+  PrefabSolider: {fileID: 5442024931517311882, guid: 6e494a1e1128fbb489deebe8a1dd5569,
+    type: 3}
 --- !u!1 &214333482
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &539398490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2209,13 +2213,14 @@ GameObject:
   - component: {fileID: 1759715009}
   - component: {fileID: 1759715008}
   - component: {fileID: 1759715007}
+  - component: {fileID: 1759715010}
   m_Layer: 5
   m_Name: SoldierBlankList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1759715006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2288,6 +2293,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1759715010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759715005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893c447f5a9ab654eb7b38d42a7cee44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840137278
 GameObject:
   m_ObjectHideFlags: 0
