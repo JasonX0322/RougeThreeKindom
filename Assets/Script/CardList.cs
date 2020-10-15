@@ -97,7 +97,7 @@ public class CardList : MonoBehaviour
 
     bool CardEnable(int i)
     {
-        if (!this.transform.GetChild(i).GetComponent<Card>().isEmpty)
+        if (this.transform.GetChild(i).GetComponent<Card>().myType != Card.CardType.Empty)
         {
             this.transform.GetChild(i).GetComponent<Toggle>().enabled = true;
             return false;

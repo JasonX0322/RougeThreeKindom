@@ -7,7 +7,9 @@ using DG.Tweening;
 public class GameManage : MonoBehaviour
 {
     /*
-     *
+     * void pass 下一列卡牌
+     * enum LoseCondition 失败情况
+     * void Lose 显示失败
      */
     public GameObject cardList;
     public GameObject canvas;
@@ -16,6 +18,13 @@ public class GameManage : MonoBehaviour
 
     int LevelNow;
     public int PosNow;
+
+    [Header("士兵列表")]
+    public List<Soldier> mySoldier = new List<Soldier>();
+    [Header("将军列表")]
+    public List<General> myGeneral = new List<General>();
+
+    Soldier exsoldier;
 
     void Start()
     {
@@ -97,5 +106,12 @@ public class GameManage : MonoBehaviour
                 Debug.Log("此处，就是落凤坡吗");
                 break;
         }
+    }
+
+    public void AddSoldier(Soldier.SoldierType st)
+    {
+        Soldier s = exsoldier;
+        s.Init(st);
+        mySoldier.Add(s);
     }
 }
