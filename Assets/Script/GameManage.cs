@@ -26,8 +26,11 @@ public class GameManage : MonoBehaviour
 
     public Soldier PrefabSolider;
 
+    GameObject SoldierList;
+
     void Start()
     {
+        SoldierList = GameObject.Find("SoldierList");
         GameObject.DontDestroyOnLoad(gameObject);
         GenerateLists(5);
         LevelNow = 0;
@@ -111,7 +114,8 @@ public class GameManage : MonoBehaviour
     public void AddSoldier(Soldier.SoldierType st)
     {
         Soldier s = GameObject.Instantiate(PrefabSolider);
-        PrefabSolider.Init(st);
+        s.transform.parent = SoldierList.transform;
+        s.Init(st);
         mySoldier.Add(s);
     }
 }

@@ -19,10 +19,6 @@ public class SoldierList : MonoBehaviour
         
     }
 
-    public void UpdateSoldierList()
-    {
-        SoldierList = gm.mySoldier;
-    }
 
     public void LastSoldierList()
     {
